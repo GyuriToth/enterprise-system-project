@@ -1,0 +1,63 @@
+version: "3.8"
+
+services:
+    # PostgreSQL
+    db:
+        image: postgres:15-alpine
+        container_name: postgres_db
+        restart: always
+        environment:
+            POSTGRES_USER: admin
+            POSTGRES_PASSWORD: secretpassword
+            POSTGRES_DB: transaction_db
+        ports:
+            - "5432:5432"
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+        networks:
+            - enterprise-net
+
+    # pgAdmin
+    pgadmin:
+        image: dpage/pgadmin4
+        container_name: pgadmin_gui
+        restart: always
+        environment:
+            PGADMIN_DEFAULT_EMAIL: gyuri@dev.com
+            PGADMIN_DEFAULT_PASSWORD: admin
+        ports:
+            - "5050:80"
+        depends_on:
+            - db
+        networks:
+            - enterprise-net
+
+    # Python Backend (FastAPI)
+    backend:
+        build: ./backend-python
+        container_name: python_backend
+        restart: always
+        environment:
+            DATABASE_URL: postgresql://admin:secretpassword@db:5432/transaction_db
+        ports:
+            - "8000:8000"
+        depends_on:
+            - db
+        networks:
+            - enterprise-net
+
+    # Go Frontend
+    # frontend:
+    #     build: ./frontend-go
+    #     container_name: go_frontend
+    #     ports:
+    #         - "8081:8080"
+    #     networks:
+    #         - enterprise-net
+
+networks:
+    enterprise-net:
+        driver: bridge
+
+volumes:
+    postgres_data:
