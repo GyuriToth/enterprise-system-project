@@ -1,3 +1,14 @@
+<p align="center">
+<pre>
+  ██████╗ ██╗   ██╗ ██████╗ ██████╗  ██████╗ ██╗   ██╗    ████████╗ ██████╗ ████████╗██╗  ██╗
+ ██╔════╝ ╚██╗ ██╔╝██╔═══██╗██╔══██╗██╔════╝ ╚██╗ ██╔╝    ╚══██╔══╝██╔═══██╗╚══██╔══╝██║  ██║
+ ██║  ███╗ ╚████╔╝ ██║   ██║██████╔╝██║  ███╗ ╚████╔╝        ██║   ██║   ██║   ██║   ███████║
+ ██║   ██║  ╚██╔╝  ██║   ██║██╔══██╗██║   ██║  ╚██╔╝         ██║   ██║   ██║   ██║   ██║  ██║
+ ╚██████╔╝   ██║   ╚██████╔╝██║  ██║╚██████╔╝   ██║          ██║   ╚██████╔╝   ██║   ██║  ██║
+  ╚═════╝    ╚═╝    ╚═════╝ ╚═╝  ╚═╝ ╚═════╝    ╚═╝          ╚═╝    ╚═════╝    ╚═╝   ╚═╝  ╚═╝
+</pre>
+</p>
+
 # Enterprise Transaction Monitor & Analytics
 
 Ez a projekt egy elosztott mikroservice ökoszisztéma, amit arra terveztem, hogy nagy sebességű pénzügyi tranzakciókat fogadjon, dolgozzon fel és vizualizáljon. A rendszer egy hibrid-felhő architektúrát használ: a szolgáltatások lokálisan (Docker), míg az adatbázis éles felhő környezetben (AWS RDS) fut.
